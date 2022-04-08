@@ -9,20 +9,15 @@ class Thinning {
      */
     static convert(src) {
         // ImageData -> Uint8ClampedArray
-        const u8dst = new Uint8ClampedArray(src.width * src.height);
-        for(let i = 0; i < u8dst.length; i += 1) {
-            u8dst[i] = src.data[i * 4] ? 1 : 0
-        }
+        const u8dst = new Uint8ClampedArray(src.width * src.height)
+                      .map((e, i) => src.data[i * 4] ? 1 : 0);
 
         // prev
-        let prev = new Uint8ClampedArray(u8dst.length);
-        for(let i = 0; i < prev.length; i += 1) {
-            prev[i] = u8dst[i];
-        }
-        let dbgCnt = 0;
+        let prev = new Uint8ClampedArray(u8dst.length)
+                   .map((e, i) => u8dst[i]);
+        let iteCnt = 0;
         do {
-            if(++dbgCnt > 100) {
-                debugger;
+            if(++iteCnt > 1000) {
                 break;
             };
             Thinning.thinningIte(u8dst, 0, src.width, src.height);
@@ -83,8 +78,7 @@ class Thinning {
 
                 if(S === 1 && (N >= 2 && N <= 6) && m1 === 0 && m2 === 0) {
                     u8marker[y * width + x] = 0;
-                }
-                
+                }                
             }
         }
         for(let i = 0; i < u8ary.length; i += 1) {
