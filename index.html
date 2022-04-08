@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>image processing</title>
+<script src="js/main.js"></script>
+<script src="js/utility.js"></script>
+<script src="js/grayscale.js"></script>
+<script src="js/binarization.js"></script>
+<script src="js/mosaic.js"></script>
+<script src="js/sepia.js"></script>
+<script src="js/thinning.js"></script>
+<script>document.addEventListener('DOMContentLoaded', Main.init);</script>
+</head>
+<body>
+    select image
+    <select id="image-select">
+        <option value="images/lenna.jpg">lenna</option>
+        <option value="images/mandrill.jpg">mandrill</option>
+        <option value="images/temple.png">temple</option>
+        <option value="images/girl.jpg">girl</option>
+        <option value="images/thinning.jpg" selected>thinning</option>
+    </select>
+    <br>
+    <button id="reset-button">reset</button>
+    <button id="grayscale-button">grayscale</button>
+    <button id="binarization-button">binarization</button>
+    <button id="mosaic-button">mosaic</button>
+    <button id="sepia-button">sepia</button>
+    <button id="thinning-button">thinning</button>
+    <br>
+    <canvas id="src-canvas"></canvas>
+    &nbsp;->&nbsp;
+    <canvas id="dst-canvas"></canvas>
+</body>
+</html>
